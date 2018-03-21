@@ -33,14 +33,14 @@ void odometryCallback(const nav_msgs::OdometryConstPtr msg)
     _current_yaw = yaw;
 
     // transform the command
-    double off_x = _vx * cos(_current_yaw) - _vy * sin(_current_yaw);
+    double off_x = _vx * cos(_current_yaw) - _vy * sin(_current_yaw) - 0.15;
     double off_y = _vx * sin(_current_yaw) + _vy * cos(_current_yaw);
  
     // Add some offset on current position based on keyboard command
     double kl = 1.0, ka = 1.0;
     _desired_position(0) = _current_position(0) + kl * off_x;
     _desired_position(1) = _current_position(1) + kl * off_y;
-    _desired_position(2) = _current_position(2) + kl * _vz;
+    _desired_position(2) = _current_position(2) + kl * _vz + 0.2;
 
     _desired_yaw = _current_yaw + ka * _yaw_rate;
 
