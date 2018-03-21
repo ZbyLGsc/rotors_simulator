@@ -68,6 +68,10 @@ add_executable(hovering_example src/hovering_example.cpp)
 target_link_libraries(hovering_example ${catkin_LIBRARIES})
 add_dependencies(hovering_example ${catkin_EXPORTED_TARGETS})
 
+add_executable(keyboard_flying src/keyboard_flying.cpp)
+target_link_libraries(keyboard_flying ${catkin_LIBRARIES})
+add_dependencies(keyboard_flying ${catkin_EXPORTED_TARGETS})
+
 foreach(dir launch models resource worlds)
    install(DIRECTORY ${dir}/
       DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/${dir})
